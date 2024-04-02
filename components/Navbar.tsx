@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import { Moon, ShoppingCart, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 type Props = {};
 
@@ -39,8 +40,14 @@ const Navbar = (props: Props) => {
 	const { theme, setTheme } = useTheme();
 	return (
 		<div className=' flex items-center py-4 px-8 md:px-12 lg:px-24 justify-between fixed top-0 left-0 shadow-lg w-full bg-background'>
-			<Avatar>
-				<AvatarImage src='https://github.com/shadcn.png' />
+			<Avatar className='w-16 h-16 lg:w-24 lg:h-24  shadow-md'>
+				<Image
+					className='w-full h-full'
+					width={180}
+					height={180}
+					alt='Store Logo'
+					src='/Logo1.png'
+				/>
 				<AvatarFallback>CN</AvatarFallback>
 			</Avatar>
 
@@ -60,15 +67,15 @@ const Navbar = (props: Props) => {
 				<Button
 					onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
 					size={"icon"}>
-					<Moon className='w-6 h-6 absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100 transition-all' />
+					<Moon className='w-4 lg:w-6 h-4 lg:h-6 absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100 transition-all' />
 
-					<Sun className='w-6 h-6 absolute rotate-0 scale-100 dark:rotate-90 dark:scale-0 transition-all' />
+					<Sun className='w-4 lg:w-6 h-4 lg:h-6 absolute rotate-0 scale-100 dark:rotate-90 dark:scale-0 transition-all' />
 				</Button>
 
 				<Button
 					variant={"outline"}
 					size={"icon"}>
-					<ShoppingCart />
+					<ShoppingCart className='w-4 lg:w-6 h-4 lg:h-6' />
 				</Button>
 			</div>
 		</div>

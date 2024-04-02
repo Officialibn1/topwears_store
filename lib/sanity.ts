@@ -1,4 +1,4 @@
-import imageUrlBuilder from "@sanity/image-url/lib/types/builder";
+import imageUrlBuilder from "@sanity/image-url";
 import { createClient } from "next-sanity";
 
 export const client = createClient({
