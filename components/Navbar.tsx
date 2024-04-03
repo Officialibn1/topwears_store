@@ -18,19 +18,15 @@ const navbarLinks: { name: string; url: string }[] = [
 	},
 	{
 		name: "Men",
-		url: "/Men",
+		url: "/Categories/Men",
 	},
 	{
 		name: "Women",
-		url: "/Women",
+		url: "/Categories/Women",
 	},
 	{
-		name: "Teenage",
-		url: "/Teenage",
-	},
-	{
-		name: "Fashion",
-		url: "/Fashion",
+		name: "Shoes",
+		url: "/Categories/Shoes",
 	},
 ];
 
