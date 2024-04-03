@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 type Props = {
 	title: string;
-	link: string;
+	link?: string;
 };
 
 const SectionHeader = ({ link, title }: Props) => {
@@ -15,19 +15,21 @@ const SectionHeader = ({ link, title }: Props) => {
 				{title}
 			</h1>
 
-			<Button
-				asChild
-				variant={"secondary"}
-				size={"default"}
-				className='flex gap-2 items-center'>
-				<Link
-					href={link}
-					className='flex items-center gap-2'>
-					<span>View All</span>
+			{link && (
+				<Button
+					asChild
+					variant={"secondary"}
+					size={"default"}
+					className='flex gap-2 items-center'>
+					<Link
+						href={link}
+						className='flex items-center gap-2'>
+						<span>View All</span>
 
-					<ArrowRight />
-				</Link>
-			</Button>
+						<ArrowRight />
+					</Link>
+				</Button>
+			)}
 		</div>
 	);
 };

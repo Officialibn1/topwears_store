@@ -6,6 +6,7 @@ import { NewProduct } from "@/typings";
 import Image from "next/image";
 
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 type Props = {};
 
@@ -40,7 +41,8 @@ const NewProductsSection = async (props: Props) => {
 
 			<div className='grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 xl:gap-x-12 xl:gap-y-16 xl:grid-cols-3 '>
 				{newProducts.map((product) => (
-					<div
+					<Link
+						href={`/Product/${product.slug}`}
 						key={product._id}
 						className='group relative rounded-lg border overflow-hidden'>
 						<div className='w-full h-4/5 overflow-hidden rounded-t-lg bg-foreground/20 group-hover:opacity-75'>
@@ -66,7 +68,7 @@ const NewProductsSection = async (props: Props) => {
 								{product.categoryName}
 							</Badge>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
