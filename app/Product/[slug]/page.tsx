@@ -34,7 +34,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 	const product: FullProduct = await fetchProductItem(params.slug);
 
 	return (
-		<div className={`${productContainer} outline flex flex-col gap-20`}>
+		<div className={`${productContainer}  flex flex-col gap-20`}>
 			<div className={`mt-40 grid grid-cols-1 md:grid-cols-3 gap-8`}>
 				<ProductImageGallery images={product.images} />
 				<div className='flex flex-col gap-3'>
@@ -91,7 +91,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 				</div>
 			</div>
 
-			<SectionHeader title='Similar Products' />
+			{/* <SectionHeader title='Similar Products' /> */}
 		</div>
 	);
 };

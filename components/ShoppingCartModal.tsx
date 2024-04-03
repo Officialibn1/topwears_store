@@ -23,13 +23,19 @@ import { Trash } from "lucide-react";
 type Props = {};
 
 const ShoppingCartModal = (props: Props) => {
-	const { shouldDisplayCart, handleCartClick, cartCount, cartDetails } =
-		useShoppingCart();
+	const {
+		shouldDisplayCart,
+		handleCartClick,
+		cartCount,
+		cartDetails,
+		removeItem,
+		totalPrice,
+	} = useShoppingCart();
 	return (
 		<Sheet
 			open={shouldDisplayCart}
 			onOpenChange={() => handleCartClick()}>
-			<SheetContent className='outline flex flex-col'>
+			<SheetContent className=' flex flex-col'>
 				<SheetHeader>
 					<SheetTitle className='text-2xl'>Cart Items</SheetTitle>
 				</SheetHeader>
@@ -73,6 +79,7 @@ const ShoppingCartModal = (props: Props) => {
 											</div>
 
 											<Button
+												onClick={() => removeItem(item.id)}
 												size={"icon"}
 												variant={"destructive"}>
 												<Trash className='w-5 h-5' />
@@ -85,15 +92,36 @@ const ShoppingCartModal = (props: Props) => {
 					)}
 				</div>
 
-				<SheetFooter>
+				{Number(totalPrice) > 0 && (
+					<div className='flex flex-col pt-5 mb-5 border-t-2'>
+						<div className='flex justify-between items-center'>
+							<h1 className=' text-lg font-semibold'>Subtotal: </h1>
+							<h1 className=' text-lg font-semibold'>
+								${totalPrice?.toFixed(2)}
+							</h1>
+						</div>
+						<p className=' text-sm font-light text-foreground/60'>
+							Shipping and Taxes are calculated at checkout.
+						</p>
+					</div>
+				)}
+
+				<div className='flex flex-col sm:flex-row  items-center justify-between gap-5'>
+					<Button
+						className='w-full sm:flex-1 bg-green-500 text-green-800 hover:bg-green-500/75'
+						disabled={!cartCount ? true : false}
+						type='submit'>
+						Checkout
+					</Button>
 					<SheetClose asChild>
 						<Button
-							disabled={!cartCount ? true : false}
+							className='w-full sm:flex-1'
+							variant={"secondary"}
 							type='submit'>
-							Proceed to Checkout
+							Continue Shopping
 						</Button>
 					</SheetClose>
-				</SheetFooter>
+				</div>
 			</SheetContent>
 		</Sheet>
 	);
