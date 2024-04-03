@@ -8,6 +8,8 @@ import Link from "next/link";
 import { Moon, ShoppingCart, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import ShoppingCartModal from "./ShoppingCartModal";
+import { useShoppingCart } from "use-shopping-cart";
 
 type Props = {};
 
@@ -34,6 +36,8 @@ const Navbar = (props: Props) => {
 	const pathname = usePathname();
 
 	const { theme, setTheme } = useTheme();
+
+	const { cartCount, handleCartClick } = useShoppingCart();
 	return (
 		<div className=' flex items-center py-4 px-8 md:px-12 lg:px-24 justify-between fixed top-0 left-0 shadow-lg w-full bg-background z-40'>
 			<Avatar className='w-16 h-16 lg:w-24 lg:h-24  shadow-md'>
@@ -69,9 +73,15 @@ const Navbar = (props: Props) => {
 				</Button>
 
 				<Button
+					onClick={() => handleCartClick()}
+					className='relative'
 					variant={"outline"}
 					size={"icon"}>
 					<ShoppingCart className='w-4 lg:w-6 h-4 lg:h-6' />
+
+					<span className='text-sm font-semibold absolute -top-3 -right-2 bg-foreground text-background rounded-full p-1 h-6 w-6 flex items-center justify-center'>
+						{cartCount}
+					</span>
 				</Button>
 			</div>
 		</div>

@@ -1,4 +1,6 @@
 import ProductImageGallery from "@/components/ProductImageGallery";
+import AddToCartButton from "@/components/ui/AddToCartButton";
+import CheckOutButton from "@/components/ui/CheckOutButton";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -68,13 +70,17 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 					</div>
 
 					<div className='flex gap-8  items-center md:flex-col md:items-start md:gap-4 lg:flex-row '>
-						<Button className='flex gap-1'>
-							<span>Add to Cart</span>
+						<AddToCartButton
+							name={product.name}
+							currency='USD'
+							description={product.description}
+							price={product.price}
+							image={product.images[0]}
+							key={product._id}
+							product_id={product._id}
+						/>
 
-							<ShoppingBag />
-						</Button>
-
-						<Button variant={"secondary"}>Checkout Now</Button>
+						<CheckOutButton />
 					</div>
 
 					<div className='p-2 h-40 xl:h-fit xl:mt-10 overflow-y-auto border rounded-md'>

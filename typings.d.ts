@@ -22,3 +22,12 @@ export interface FullProduct {
 	category_name: string;
 	description: string;
 }
+
+export type CartItem = {
+	name: string;
+	description: string;
+	price: number;
+	currency: string;
+	image: any;
+	product_id: string;
+};

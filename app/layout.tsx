@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/providers/theme_provider";
 import ShoppingCartProvider from "@/providers/ShoppingCartProvider";
+import ShoppingCartModal from "@/components/ShoppingCartModal";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -23,6 +24,9 @@ export default function RootLayout({
 					defaultTheme='light '>
 					<ShoppingCartProvider>
 						<Navbar />
+
+						<ShoppingCartModal />
+
 						{children}
 					</ShoppingCartProvider>
 				</ThemeProvider>
