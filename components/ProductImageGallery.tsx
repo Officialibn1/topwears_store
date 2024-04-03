@@ -16,14 +16,14 @@ const ProductImageGallery = ({ images }: Props) => {
 				{images.map((image: any, index) => (
 					<div
 						className='w-full flex-1  bg-foreground/20 rounded-lg overflow-hidden shadow-lg hover:shadow-sm'
-						key={index}>
+						key={image.asset._ref + index}>
 						<Image
 							onMouseEnter={() => setMainImage(image)}
 							src={urlFor(image).url()}
 							width={200}
 							height={300}
 							className='w-full h-full object-cover object-center cursor-pointer'
-							alt={image._key}
+							alt={image.asset._ref}
 						/>
 					</div>
 				))}

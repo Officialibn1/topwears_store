@@ -8,11 +8,8 @@ import {
 	Sheet,
 	SheetClose,
 	SheetContent,
-	SheetDescription,
-	SheetFooter,
 	SheetHeader,
 	SheetTitle,
-	SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { useShoppingCart } from "use-shopping-cart";
@@ -30,7 +27,23 @@ const ShoppingCartModal = (props: Props) => {
 		cartDetails,
 		removeItem,
 		totalPrice,
+		redirectToCheckout,
 	} = useShoppingCart();
+
+	const proceedToCheckout = async (e: any) => {
+		e.preventDefault();
+
+		try {
+			const response = await redirectToCheckout();
+
+			if (response?.error) {
+				console.log("An error was encountered while checkout", response?.error);
+			}
+		} catch (error) {
+			console.log("An error was encountered while checkout", error);
+		}
+	};
+
 	return (
 		<Sheet
 			open={shouldDisplayCart}
@@ -110,6 +123,7 @@ const ShoppingCartModal = (props: Props) => {
 					<Button
 						className='w-full sm:flex-1 bg-green-500 text-green-800 hover:bg-green-500/75'
 						disabled={!cartCount ? true : false}
+						onClick={proceedToCheckout}
 						type='submit'>
 						Checkout
 					</Button>

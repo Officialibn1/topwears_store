@@ -21,6 +21,7 @@ export interface FullProduct {
 	images: ProductImage[];
 	category_name: string;
 	description: string;
+	stripe_price_id: string;
 }
 
 export type CartItem = {
@@ -30,4 +31,5 @@ export type CartItem = {
 	currency: string;
 	image: any;
 	product_id: string;
+	price_id: string;
 };

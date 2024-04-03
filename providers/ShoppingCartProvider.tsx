@@ -12,8 +12,8 @@ const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
 			language='en-US'
 			billingAddressCollection
 			stripe={process.env.NEXT_PUBLIC_STRIPE_KEY as string}
-			successUrl=''
-			cancelUrl=''>
+			successUrl='http://localhost:3000/Stripe/Success'
+			cancelUrl='http://localhost:3000/Stripe/Error'>
 			{children}
 		</CartProvider>
 	);

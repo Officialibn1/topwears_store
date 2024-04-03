@@ -13,6 +13,7 @@ const AddToCartButton = ({
 	currency,
 	image,
 	product_id,
+	price_id,
 }: CartItem) => {
 	const { addItem } = useShoppingCart();
 
@@ -22,7 +23,7 @@ const AddToCartButton = ({
 		price,
 		currency,
 		image: urlFor(image).url(),
-		id: product_id,
+		price_id,
 	};
 	return (
 		<Button

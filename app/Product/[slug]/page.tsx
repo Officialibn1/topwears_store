@@ -10,6 +10,8 @@ import { FullProduct } from "@/typings";
 import { ShoppingBag, Star, TruckIcon } from "lucide-react";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 type Props = {};
 
 const fetchProductItem = async (slug: string) => {
@@ -21,7 +23,8 @@ const fetchProductItem = async (slug: string) => {
 				images,
 				'category_name': category->name,
 				description,
-				'slug': slug.current
+				'slug': slug.current,
+				stripe_price_id
 			}
 	`;
 
@@ -78,9 +81,19 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 							image={product.images[0]}
 							key={product._id}
 							product_id={product._id}
+							price_id={product.stripe_price_id}
 						/>
 
-						<CheckOutButton />
+						<CheckOutButton
+							name={product.name}
+							currency='USD'
+							description={product.description}
+							price={product.price}
+							image={product.images[0]}
+							key={product._id}
+							product_id={product._id}
+							price_id={product.stripe_price_id}
+						/>
 					</div>
 
 					<div className='p-2 h-40 xl:h-fit xl:mt-10 overflow-y-auto border rounded-md'>

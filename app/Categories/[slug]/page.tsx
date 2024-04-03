@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 const fetchCategoryProducts = async (category: string) => {
 	const query = `*[_type == 'product' && category->name == '${category}'] {
 						_id,
