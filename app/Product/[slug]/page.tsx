@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { container, productContainer } from "@/components/ui/container";
 import { client } from "@/lib/sanity";
-import { Product } from "@/typings";
+import { FullProduct } from "@/typings";
 import { ShoppingBag, Star, TruckIcon } from "lucide-react";
 import React from "react";
 
@@ -29,7 +29,7 @@ const fetchProductItem = async (slug: string) => {
 };
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
-	const product: Product = await fetchProductItem(params.slug);
+	const product: FullProduct = await fetchProductItem(params.slug);
 
 	return (
 		<div className={`${productContainer} outline flex flex-col gap-20`}>

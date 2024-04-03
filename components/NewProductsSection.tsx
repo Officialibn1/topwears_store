@@ -2,7 +2,7 @@ import React from "react";
 import SectionHeader from "./ui/SectionHeader";
 import { container } from "./ui/container";
 import { client } from "@/lib/sanity";
-import { NewProduct } from "@/typings";
+import { Product } from "@/typings";
 import Image from "next/image";
 
 import { Badge } from "@/components/ui/badge";
@@ -27,7 +27,7 @@ const fetchNeProducts = async () => {
 };
 
 const NewProductsSection = async (props: Props) => {
-	const newProducts: NewProduct[] = await fetchNeProducts();
+	const newProducts: Product[] = await fetchNeProducts();
 
 	return (
 		<div

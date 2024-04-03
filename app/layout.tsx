@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/providers/theme_provider";
+import ShoppingCartProvider from "@/providers/ShoppingCartProvider";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -20,8 +21,10 @@ export default function RootLayout({
 					enableSystem
 					attribute='class'
 					defaultTheme='light '>
-					<Navbar />
-					{children}
+					<ShoppingCartProvider>
+						<Navbar />
+						{children}
+					</ShoppingCartProvider>
 				</ThemeProvider>
 			</body>
 		</html>

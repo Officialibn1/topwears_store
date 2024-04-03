@@ -2,7 +2,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { container } from "@/components/ui/container";
 import { client } from "@/lib/sanity";
-import { NewProduct } from "@/typings";
+import { Product } from "@/typings";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -23,7 +23,7 @@ const fetchCategoryProducts = async (category: string) => {
 };
 
 const CategoryPage = async ({ params }: { params: { slug: string } }) => {
-	const newProducts: NewProduct[] = await fetchCategoryProducts(params.slug);
+	const newProducts: Product[] = await fetchCategoryProducts(params.slug);
 
 	return (
 		<div
@@ -54,11 +54,15 @@ const CategoryPage = async ({ params }: { params: { slug: string } }) => {
 								<h3>${product.price}</h3>
 							</div>
 
-							<Badge
-								variant='secondary'
-								className='w-fit'>
-								{product.categoryName}
-							</Badge>
+							<Link
+								href={`/Categories/${product.categoryName}`}
+								className='z-[5]'>
+								<Badge
+									variant='secondary'
+									className='w-fit'>
+									{product.categoryName}
+								</Badge>
+							</Link>
 						</div>
 					</Link>
 				))}

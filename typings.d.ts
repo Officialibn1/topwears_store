@@ -1,4 +1,4 @@
-export interface NewProduct {
+export interface Product {
 	_id: string;
 	name: string;
 	price: number;
@@ -13,7 +13,7 @@ interface ProductImage {
 	asset: any;
 }
 
-export interface Product {
+export interface FullProduct {
 	slug: string;
 	_id: string;
 	name: string;

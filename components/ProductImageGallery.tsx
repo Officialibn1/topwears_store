@@ -29,7 +29,7 @@ const ProductImageGallery = ({ images }: Props) => {
 				))}
 			</div>
 
-			<div className='w-full relative h-full overflow-hidden my-auto rounded-lg shadow-lg col-span-3 bg-foreground/30'>
+			<div className='w-full relative h-full overflow-hidden my-auto rounded-lg shadow-lg col-span-3 bg-foreground/30 lg:max-h-[574.05px] xl:max-h-[699.12px]'>
 				<Image
 					className='w-full h-full object-cover object-center'
 					src={urlFor(mainImage).url()}
