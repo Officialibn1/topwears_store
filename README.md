@@ -24,7 +24,7 @@
     name: 'default',
     title: 'cn_wears_cms', //Replace with your project title
 
-    projectId: 'ql3jlmao', //Replace with your project ID
+    projectId: '', //Replace with your project ID
     dataset: 'production',
 
     plugins: [structureTool(), visionTool()],
