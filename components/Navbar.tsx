@@ -41,6 +41,29 @@ const navbarLinks: { name: string; url: string }[] = [
 	},
 ];
 
+const categoryLinks: { name: string; url: string }[] = [
+	{
+		name: "Men",
+		url: "/Categories/Men",
+	},
+	{
+		name: "Women",
+		url: "/Categories/Women",
+	},
+	{
+		name: "Shoes",
+		url: "/Categories/Shoes",
+	},
+	{
+		name: "Teenage",
+		url: "/Categories/Teenage",
+	},
+	{
+		name: "Kids",
+		url: "/Categories/Kids",
+	},
+];
+
 const Navbar = (props: Props) => {
 	const pathname = usePathname();
 
@@ -93,11 +116,13 @@ const Navbar = (props: Props) => {
 					<MenubarMenu>
 						<MenubarTrigger>Categories</MenubarTrigger>
 						<MenubarContent>
-							{categories?.map((catogory) => (
+							{categoryLinks?.map((category) => (
 								<div
-									className='flex flex-col w-full outline'
-									key={catogory._id}>
-									<MenubarItem>{catogory.name}</MenubarItem>
+									className='flex flex-col w-full'
+									key={category.name}>
+									<MenubarItem asChild>
+										<Link href={category.url}>{category.name}</Link>
+									</MenubarItem>
 									<MenubarSeparator />
 								</div>
 							))}
