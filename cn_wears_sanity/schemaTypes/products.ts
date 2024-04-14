@@ -38,12 +38,27 @@ export default {
       type: 'string',
     },
     {
+      name: 'discount',
+      title: 'Discount',
+      type: 'number',
+    },
+    {
       name: 'category',
       title: 'Product category',
       type: 'reference',
       to: [
         {
           type: 'category',
+        },
+      ],
+    },
+    {
+      name: 'label',
+      title: 'Product Label',
+      type: 'reference',
+      to: [
+        {
+          type: 'label',
         },
       ],
     },

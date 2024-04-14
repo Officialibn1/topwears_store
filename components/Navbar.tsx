@@ -48,7 +48,7 @@ const Navbar = (props: Props) => {
 					alt='Store Logo'
 					src='/Logo1.png'
 				/>
-				<AvatarFallback>CN</AvatarFallback>
+				<AvatarFallback>Shop</AvatarFallback>
 			</Avatar>
 
 			<div className='hidden lg:flex items-center gap-4'>

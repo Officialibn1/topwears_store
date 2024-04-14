@@ -1,5 +1,7 @@
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import NewProductsSection from "@/components/NewProductsSection";
+import PopularProductsSection from "@/components/PopularProductsSection";
 import ShoppingCartModal from "@/components/ShoppingCartModal";
 import Image from "next/image";
 
@@ -9,6 +11,8 @@ export default function Home() {
 			<Hero />
 
 			<NewProductsSection />
+
+			<PopularProductsSection />
 		</div>
 	);
 }
