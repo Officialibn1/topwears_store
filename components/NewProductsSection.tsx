@@ -19,6 +19,7 @@ const fetchNeProducts = async () => {
                         name,
                         'slug': slug.current,
                         price,
+						
                         'categoryName': category->name,
                         'imageUrl': images[0].asset->url
                     }`;

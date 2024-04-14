@@ -5,9 +5,10 @@ import React, { useState } from "react";
 
 type Props = {
 	images: any[];
+	discount: number;
 };
 
-const ProductImageGallery = ({ images }: Props) => {
+const ProductImageGallery = ({ images, discount }: Props) => {
 	const [mainImage, setMainImage] = useState(images[0]);
 
 	return (
@@ -38,9 +39,11 @@ const ProductImageGallery = ({ images }: Props) => {
 					alt={mainImage._key}
 				/>
 
-				<span className='absolute top-0 right-0 bg-green-400/60 text-green-800 px-2 py-1 rounded-es-lg text-sm'>
-					Discount: -40%
-				</span>
+				{discount && (
+					<span className='absolute top-0 right-0 bg-green-400/60 text-green-800 px-2 py-1 rounded-es-lg text-sm'>
+						Discount: -{discount}%
+					</span>
+				)}
 			</div>
 		</div>
 	);

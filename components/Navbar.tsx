@@ -1,6 +1,17 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import {
+	Menubar,
+	MenubarContent,
+	MenubarItem,
+	MenubarMenu,
+	MenubarSeparator,
+	MenubarShortcut,
+	MenubarTrigger,
+} from "@/components/ui/menubar";
+
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -10,34 +21,53 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import ShoppingCartModal from "./ShoppingCartModal";
 import { useShoppingCart } from "use-shopping-cart";
+import { ProductCategory } from "@/typings";
+import { client } from "@/lib/sanity";
 
 type Props = {};
 
 const navbarLinks: { name: string; url: string }[] = [
 	{
-		name: "Home",
-		url: "/",
+		name: "Products",
+		url: "/products",
 	},
 	{
-		name: "Men",
-		url: "/Categories/Men",
+		name: "Our Brands",
+		url: "/our_brands",
 	},
 	{
-		name: "Women",
-		url: "/Categories/Women",
-	},
-	{
-		name: "Shoes",
-		url: "/Categories/Shoes",
+		name: "About Us",
+		url: "/about",
 	},
 ];
 
 const Navbar = (props: Props) => {
 	const pathname = usePathname();
 
+	const [categories, setCategories] = useState<ProductCategory[]>([]);
+
 	const { theme, setTheme } = useTheme();
 
 	const { cartCount, handleCartClick } = useShoppingCart();
+
+	useEffect(() => {
+		const fetchCategories = async () => {
+			const query = `*[_type == 'category'] {
+								_id,
+								name,
+							}`;
+
+			const data = await client.fetch(query);
+
+			const categoryList: ProductCategory[] = await data.result;
+
+			setCategories(categoryList);
+
+			console.log("Category List", data.result);
+		};
+
+		fetchCategories();
+	}, []);
 	return (
 		<div className=' flex items-center py-4 px-8 md:px-12 lg:px-24 justify-between fixed top-0 left-0 shadow-lg w-full bg-background z-40'>
 			<Avatar className='w-16 h-16 lg:w-24 lg:h-24  shadow-md'>
@@ -52,9 +82,32 @@ const Navbar = (props: Props) => {
 			</Avatar>
 
 			<div className='hidden lg:flex items-center gap-4'>
+				<Button
+					variant={pathname === "/" ? "default" : "outline"}
+					size={"sm"}
+					asChild>
+					<Link href={"/"}>{"Home"}</Link>
+				</Button>
+
+				<Menubar>
+					<MenubarMenu>
+						<MenubarTrigger>Categories</MenubarTrigger>
+						<MenubarContent>
+							{categories?.map((catogory) => (
+								<div
+									className='flex flex-col w-full outline'
+									key={catogory._id}>
+									<MenubarItem>{catogory.name}</MenubarItem>
+									<MenubarSeparator />
+								</div>
+							))}
+						</MenubarContent>
+					</MenubarMenu>
+				</Menubar>
+
 				{navbarLinks.map((link, i) => (
 					<Button
-						variant={pathname === link.url ? "default" : "ghost"}
+						variant={pathname === link.url ? "default" : "outline"}
 						size={"sm"}
 						key={i}
 						asChild>

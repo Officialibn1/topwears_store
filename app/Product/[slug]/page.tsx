@@ -22,6 +22,7 @@ const fetchProductItem = async (slug: string) => {
 				name,
 				price,
 				images,
+				discount,
 				'category_name': category->name,
 				description,
 				'slug': slug.current,
@@ -41,6 +42,7 @@ const fetchSimilarProduct = async (category: string) => {
 		name,
 		'slug': slug.current,
 		price,
+		discount,
 		'categoryName': category->name,
 		'imageUrl': images[0].asset->url
 	  }
@@ -61,7 +63,10 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 	return (
 		<div className={`${productContainer}  flex flex-col gap-20`}>
 			<div className={`mt-40 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 `}>
-				<ProductImageGallery images={product.images} />
+				<ProductImageGallery
+					images={product.images}
+					discount={product.discount}
+				/>
 				<div className='flex flex-col gap-3'>
 					<h1 className='text-3xl font-semibold'>{product.name}</h1>
 

@@ -18,6 +18,7 @@ export interface FullProduct {
 	_id: string;
 	name: string;
 	price: number;
+	discount: number;
 	images: ProductImage[];
 	category_name: string;
 	description: string;
@@ -32,4 +33,9 @@ export type CartItem = {
 	image: any;
 	product_id: string;
 	price_id: string;
+};
+
+export type ProductCategory = {
+	_id: string;
+	name: string;
 };
