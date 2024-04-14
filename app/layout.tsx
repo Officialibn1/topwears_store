@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/providers/theme_provider";
 import ShoppingCartProvider from "@/providers/ShoppingCartProvider";
 import ShoppingCartModal from "@/components/ShoppingCartModal";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -28,6 +29,8 @@ export default function RootLayout({
 						<ShoppingCartModal />
 
 						{children}
+
+						<Footer />
 					</ShoppingCartProvider>
 				</ThemeProvider>
 			</body>
