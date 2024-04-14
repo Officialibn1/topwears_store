@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TOP WEARS ECOMMERCE STORE
 
-## Getting Started
+## A place where you can find all your top brands at affordable price and great logistics.
 
-First, run the development server:
+> This project is a personal projects but have been used as a starting template for lot's of my clients.
 
+
+## The project depends on the following to function properly
+
+> Clone the repo using 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    git clone https://github.com/Officialibn1/topwears_store.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Install all dependencies using 
+```bash
+    npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> Replace this line with your sanity project ID in sanity.config.ts file
+```javascript
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    export default defineConfig({
+    name: 'default',
+    title: 'cn_wears_cms', //Replace with your project title
 
-## Learn More
+    projectId: '', //Replace with your project ID
+    dataset: 'production',
 
-To learn more about Next.js, take a look at the following resources:
+    plugins: [structureTool(), visionTool()],
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    schema: {
+        types: schemaTypes,
+    },
+    })
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+> Create a .env file with this line of environment variable
+```env
+    NEXT_PUBLIC_STRIPE_KEY=   // Stripe public key
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> This is the only place the environment variable is used [ShoppingCartProvider.tsx]
+```javascript
+    "use client";
+    import { ReactNode } from "react";
+    import { CartProvider } from "use-shopping-cart";
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
+        return (
+            <CartProvider
+                currency='USD'
+                mode='payment'
+                cartMode='client-only'
+                shouldPersist
+                language='en-US'
+                billingAddressCollection
+                stripe={process.env.NEXT_PUBLIC_STRIPE_KEY as string}
+                successUrl='https://topwears-store.vercel.app/Stripe/Success'
+                cancelUrl='https://topwears-store.vercel.app/Stripe/Error'>
+                {children}
+            </CartProvider>
+        );
+    };
+
+    export default ShoppingCartProvider;
+
+```
+
