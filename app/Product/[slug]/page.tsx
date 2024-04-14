@@ -5,8 +5,9 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { container, productContainer } from "@/components/ui/container";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { client } from "@/lib/sanity";
-import { FullProduct } from "@/typings";
+import { FullProduct, Product } from "@/typings";
 import { ShoppingBag, Star, TruckIcon } from "lucide-react";
 import React from "react";
 
@@ -33,12 +34,33 @@ const fetchProductItem = async (slug: string) => {
 	return response;
 };
 
+const fetchSimilarProduct = async (category: string) => {
+	const query = `
+	*[_type == 'product' && category->name == '${category}'] {
+		_id,
+		name,
+		'slug': slug.current,
+		price,
+		'categoryName': category->name,
+		'imageUrl': images[0].asset->url
+	  }
+	`;
+
+	const response = await client.fetch(query);
+
+	return response;
+};
+
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
 	const product: FullProduct = await fetchProductItem(params.slug);
 
+	const similarProduct: Product[] = await fetchSimilarProduct(
+		product.category_name,
+	);
+
 	return (
 		<div className={`${productContainer}  flex flex-col gap-20`}>
-			<div className={`mt-40 grid grid-cols-1 md:grid-cols-3 gap-8`}>
+			<div className={`mt-40 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 `}>
 				<ProductImageGallery images={product.images} />
 				<div className='flex flex-col gap-3'>
 					<h1 className='text-3xl font-semibold'>{product.name}</h1>
@@ -104,7 +126,13 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 				</div>
 			</div>
 
-			{/* <SectionHeader title='Similar Products' /> */}
+			<div className='w-full justify-between flex items-center'>
+				<h1 className='text-2xl font-bold lg:text-3xl text-foreground'>
+					Similar Products
+				</h1>
+			</div>
+
+			<InfiniteMovingCards items={similarProduct} />
 		</div>
 	);
 };
