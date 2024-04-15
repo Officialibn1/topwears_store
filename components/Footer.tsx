@@ -18,7 +18,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
 	return (
-		<div className='text-background mt-36 py-10 px-8 md:px-12 lg:px-24 lg:py-24  outline w-full bg-foreground '>
+		<div className='text-background mt-36 py-10 px-8 md:px-12 lg:px-24 lg:py-24  outline w-full  bg-gradient-to-tl from-slate-800 to-stone-900 dark:from-slate-100 dark:to-stone-400'>
 			<div className='flex flex-col  sm:flex-row lg:gap-20 gap-10'>
 				<Avatar className='w-24 h-24  shadow-md'>
 					<Image
@@ -67,7 +67,7 @@ const Footer = (props: Props) => {
 					</li>
 
 					<li>
-						<Link href={"#"}>Request a Product</Link>
+						<Link href={"/request_product"}>Request a Product</Link>
 					</li>
 				</ul>
 
@@ -87,17 +87,13 @@ const Footer = (props: Props) => {
 					<li>
 						<Link href={"#"}>Our Brands</Link>
 					</li>
-
-					<li>
-						<Link href={"#"}>Request a Product</Link>
-					</li>
 				</ul>
 			</div>
 
 			<div className='flex flex-col sm:flex-row sm:justify-between gap-8 mt-10 lg:mt-20'>
 				<div className='flex flex-col gap-4'>
 					<h1 className='text-base font-semibold leading-relaxed tracking-wide'>
-						JOIN US ON
+						FOLLOW & CONTACT US ON
 					</h1>
 					<ul className='flex gap-6 items-center'>
 						<li>
