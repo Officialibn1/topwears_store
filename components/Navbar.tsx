@@ -126,6 +126,12 @@ const Navbar = (props: Props) => {
 									<MenubarSeparator />
 								</div>
 							))}
+							<div className='flex flex-col w-full'>
+								<MenubarItem asChild>
+									<Link href={"/Categories"}>View All</Link>
+								</MenubarItem>
+								<MenubarSeparator />
+							</div>
 						</MenubarContent>
 					</MenubarMenu>
 				</Menubar>

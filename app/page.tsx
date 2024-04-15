@@ -1,9 +1,7 @@
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import NewProductsSection from "@/components/NewProductsSection";
 import PopularProductsSection from "@/components/PopularProductsSection";
-import ShoppingCartModal from "@/components/ShoppingCartModal";
-import Image from "next/image";
+import SubscribeToNewsletter from "@/components/SubscribeToNewsletter";
 
 export default function Home() {
 	return (
@@ -13,6 +11,8 @@ export default function Home() {
 			<NewProductsSection />
 
 			<PopularProductsSection />
+
+			<SubscribeToNewsletter />
 		</div>
 	);
 }
