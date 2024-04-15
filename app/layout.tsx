@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/providers/theme_provider";
@@ -29,6 +30,8 @@ export default function RootLayout({
 						<ShoppingCartModal />
 
 						{children}
+
+						<Toaster />
 
 						<Footer />
 					</ShoppingCartProvider>
