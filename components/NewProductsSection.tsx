@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 type Props = {};
 
-const fetchNeProducts = async () => {
+const fetchNewProducts = async () => {
 	const query = `*[_type == 'product'][0...3]  | order(_createdAt asc)
                     {
                         _id,
@@ -30,7 +30,7 @@ const fetchNeProducts = async () => {
 };
 
 const NewProductsSection = async (props: Props) => {
-	const newProducts: Product[] = await fetchNeProducts();
+	const newProducts: Product[] = await fetchNewProducts();
 
 	return (
 		<div
