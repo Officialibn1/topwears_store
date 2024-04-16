@@ -21,8 +21,8 @@ const Hero = async (props: Props) => {
 	return (
 		<div className={`flex flex-col gap-5  mt-40 lg:mt-60 ${container}`}>
 			<div className='relative  flex flex-col sm:flex-row gap-10 w-full  sm:items-center'>
-				<div className=' relative  w-fit'>
-					<div className='w-[200px] h-[246px] sm:w-[230px] sm:h-[282px]  xl:w-[300px] xl:h-[368px]  rounded-lg overflow-hidden '>
+				<div className=' relative  w-fit '>
+					<div className='-ml-3 sm:-ml-0 w-[200px] h-[246px] sm:w-[230px] sm:h-[282px]  xl:w-[300px] xl:h-[368px]  rounded-lg overflow-hidden '>
 						<Image
 							src={urlFor(heroImages.hero_image_one).url()}
 							width={300}
@@ -34,7 +34,7 @@ const Hero = async (props: Props) => {
 						/>
 					</div>
 
-					<div className='w-[200px] h-[246px] sm:w-[230px] sm:h-[282px]  xl:w-[300px] xl:h-[368px] shadow-lg absolute -top-10 -right-36 xl:-right-52 rounded-lg overflow-hidden '>
+					<div className='w-[200px] h-[246px] sm:w-[230px] sm:h-[282px]  xl:w-[300px] xl:h-[368px] shadow-lg absolute -top-10 -right-32 xl:-right-52 rounded-lg overflow-hidden '>
 						<Image
 							src={urlFor(heroImages.hero_image_two).url()}
 							width={300}
