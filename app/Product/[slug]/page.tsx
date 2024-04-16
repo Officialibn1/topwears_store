@@ -1,5 +1,6 @@
 import ProductImageGallery from "@/components/ProductImageGallery";
 import AddToCartButton from "@/components/ui/AddToCartButton";
+import BackButton from "@/components/ui/BackButton";
 import CheckOutButton from "@/components/ui/CheckOutButton";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,7 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { client } from "@/lib/sanity";
 import { FullProduct, Product } from "@/typings";
 import { ShoppingBag, Star, TruckIcon } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 export const dynamic = "force-dynamic";
@@ -61,8 +63,10 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 	);
 
 	return (
-		<div className={`${productContainer}  flex flex-col gap-20`}>
-			<div className={`mt-40 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 `}>
+		<div className={`${productContainer}  flex flex-col gap-20 mt-40 `}>
+			<BackButton />
+
+			<div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 `}>
 				<ProductImageGallery
 					images={product.images}
 					discount={product.discount}
@@ -137,7 +141,10 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 				</h1>
 			</div>
 
-			<InfiniteMovingCards items={similarProduct} />
+			<InfiniteMovingCards
+				speed='fast'
+				items={similarProduct}
+			/>
 		</div>
 	);
 };
