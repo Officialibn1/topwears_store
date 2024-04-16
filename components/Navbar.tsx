@@ -93,16 +93,18 @@ const Navbar = (props: Props) => {
 	}, []);
 	return (
 		<div className=' flex items-center py-4 px-8 md:px-12 lg:px-24 justify-between fixed top-0 left-0 shadow-lg w-full bg-background z-40'>
-			<Avatar className='w-16 h-16 lg:w-24 lg:h-24  shadow-md'>
-				<Image
-					className='w-full h-full'
-					width={180}
-					height={180}
-					alt='Store Logo'
-					src='/Logo1.png'
-				/>
-				<AvatarFallback>Shop</AvatarFallback>
-			</Avatar>
+			<Link href={"/"}>
+				<Avatar className='w-16 h-16 lg:w-24 lg:h-24  shadow-md'>
+					<Image
+						className='w-full h-full'
+						width={180}
+						height={180}
+						alt='Store Logo'
+						src='/Logo1.png'
+					/>
+					<AvatarFallback>Shop</AvatarFallback>
+				</Avatar>
+			</Link>
 
 			<div className='hidden lg:flex items-center gap-4'>
 				<Button
