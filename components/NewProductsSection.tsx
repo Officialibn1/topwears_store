@@ -39,7 +39,7 @@ const NewProductsSection = async (props: Props) => {
 			<SectionHeader
 				key={"new_product_title"}
 				title='New Products'
-				link='#new_products_section'
+				link='/products'
 			/>
 
 			<div className='grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 xl:gap-x-12 xl:gap-y-16 xl:grid-cols-3 '>
