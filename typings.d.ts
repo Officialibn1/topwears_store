@@ -39,3 +39,9 @@ export type ProductCategory = {
 	_id: string;
 	name: string;
 };
+
+export interface BrandInterface {
+	_id: string;
+	name: string;
+	logo: any;
+}

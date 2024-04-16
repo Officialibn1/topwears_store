@@ -1,3 +1,4 @@
+import BrandsSection from "@/components/BrandsSection";
 import Hero from "@/components/Hero";
 import NewProductsSection from "@/components/NewProductsSection";
 import PopularProductsSection from "@/components/PopularProductsSection";
@@ -13,6 +14,8 @@ export default function Home() {
 			<PopularProductsSection />
 
 			<SubscribeToNewsletter />
+
+			<BrandsSection />
 		</div>
 	);
 }
