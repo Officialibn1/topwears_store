@@ -48,7 +48,7 @@ const ShoppingCartModal = (props: Props) => {
 		<Sheet
 			open={shouldDisplayCart}
 			onOpenChange={() => handleCartClick()}>
-			<SheetContent className=' flex flex-col'>
+			<SheetContent className=' flex flex-col  overflow-y-auto'>
 				<SheetHeader>
 					<SheetTitle className='text-2xl'>Cart Items</SheetTitle>
 				</SheetHeader>
