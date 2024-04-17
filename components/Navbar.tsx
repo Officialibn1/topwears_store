@@ -54,10 +54,7 @@ const categoryLinks: { name: string; url: string }[] = [
 		name: "Shoes",
 		url: "/Categories/Shoes",
 	},
-	{
-		name: "Teenage",
-		url: "/Categories/Teenage",
-	},
+
 	{
 		name: "Kids",
 		url: "/Categories/Kids",
@@ -130,7 +127,7 @@ const Navbar = (props: Props) => {
 							))}
 							<div className='flex flex-col w-full'>
 								<MenubarItem asChild>
-									<Link href={"/Categories"}>View All</Link>
+									<Link href={"/products"}>View All</Link>
 								</MenubarItem>
 								<MenubarSeparator />
 							</div>
