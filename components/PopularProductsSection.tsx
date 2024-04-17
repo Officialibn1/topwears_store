@@ -7,10 +7,12 @@ import { Badge } from "./ui/badge";
 import Image from "next/image";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 type Props = {};
 
 const fecthPorpularProducts = async () => {
-	const query = `*[_type == 'product' && label->name == 'Popular'] {
+	const query = `*[_type == 'product' && label->name == 'Popular'][0...3] {
 		_id,
 		name,
 		'slug': slug.current,
