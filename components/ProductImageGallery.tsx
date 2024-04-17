@@ -1,4 +1,5 @@
 "use client";
+import { shimmer, toBase64 } from "@/lib/image";
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -19,6 +20,10 @@ const ProductImageGallery = ({ images, discount }: Props) => {
 						className='w-full flex-1  bg-foreground/20 rounded-lg overflow-hidden shadow-lg hover:shadow-sm'
 						key={image.asset._ref + index}>
 						<Image
+							placeholder='blur'
+							blurDataURL={`data:image/svg+xml;base64,${toBase64(
+								shimmer(200, 300),
+							)}`}
 							onMouseEnter={() => setMainImage(image)}
 							src={urlFor(image).url()}
 							width={200}
@@ -32,6 +37,10 @@ const ProductImageGallery = ({ images, discount }: Props) => {
 
 			<div className='w-full relative h-full overflow-hidden my-auto rounded-lg shadow-lg col-span-3 bg-foreground/30 lg:max-h-[574.05px] xl:max-h-[699.12px]'>
 				<Image
+					placeholder='blur'
+					blurDataURL={`data:image/svg+xml;base64,${toBase64(
+						shimmer(350, 600),
+					)}`}
 					className='w-full h-full object-cover object-center'
 					src={urlFor(mainImage).url()}
 					width={350}

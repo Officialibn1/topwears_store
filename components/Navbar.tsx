@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 import {
 	Menubar,
@@ -12,11 +13,27 @@ import {
 	MenubarTrigger,
 } from "@/components/ui/menubar";
 
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+
+import {
+	Sheet,
+	SheetClose,
+	SheetContent,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet";
+
 import { usePathname } from "next/navigation";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import Link from "next/link";
 
-import { Moon, ShoppingCart, Sun } from "lucide-react";
+import { Menu, Moon, ShoppingCart, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import ShoppingCartModal from "./ShoppingCartModal";
@@ -149,11 +166,88 @@ const Navbar = (props: Props) => {
 			<div className='flex gap-3 items-center'>
 				<Button
 					onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-					size={"icon"}>
+					size={"icon"}
+					className='hidden lg:flex'>
 					<Moon className='w-4 lg:w-6 h-4 lg:h-6 absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100 transition-all' />
 
 					<Sun className='w-4 lg:w-6 h-4 lg:h-6 absolute rotate-0 scale-100 dark:rotate-90 dark:scale-0 transition-all' />
 				</Button>
+
+				<Sheet>
+					<SheetTrigger asChild>
+						<Button
+							onClick={() => {}}
+							className='lg:hidden'
+							variant={"outline"}
+							size={"icon"}>
+							<Menu className='w-4 lg:w-6 h-4 lg:h-6' />
+						</Button>
+					</SheetTrigger>
+
+					<SheetContent>
+						<Button
+							onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+							size={"icon"}
+							className='absolute top-4 left-4'>
+							<Moon className='w-4 lg:w-6 h-4 lg:h-6 absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100 transition-all' />
+
+							<Sun className='w-4 lg:w-6 h-4 lg:h-6 absolute rotate-0 scale-100 dark:rotate-90 dark:scale-0 transition-all' />
+						</Button>
+
+						<div className='flex flex-col gap-3 overflow-y-auto mt-14 relative'>
+							<Button
+								variant={pathname === "/" ? "default" : "outline"}
+								size={"sm"}
+								asChild>
+								<Link href={"/"}>{"Home"}</Link>
+							</Button>
+
+							<Accordion
+								type='single'
+								collapsible>
+								<AccordionItem value='categories'>
+									<AccordionTrigger
+										className={cn(
+											buttonVariants({ variant: "outline" }),
+											"gap-3",
+										)}>
+										Categories
+									</AccordionTrigger>
+
+									<AccordionContent>
+										<div className='flex flex-col gap-2'>
+											{categoryLinks?.map((category) => (
+												<Button
+													asChild
+													variant={"ghost"}
+													className='flex flex-col w-full'
+													key={category.name}>
+													<Link href={category.url}>{category.name}</Link>
+												</Button>
+											))}
+											<Button
+												asChild
+												variant={"ghost"}
+												className='flex flex-col w-full'>
+												<Link href={"/products"}>View All</Link>
+											</Button>
+										</div>
+									</AccordionContent>
+								</AccordionItem>
+							</Accordion>
+
+							{navbarLinks.map((link, i) => (
+								<Button
+									variant={pathname === link.url ? "default" : "outline"}
+									size={"sm"}
+									key={i}
+									asChild>
+									<Link href={link.url}>{link.name}</Link>
+								</Button>
+							))}
+						</div>
+					</SheetContent>
+				</Sheet>
 
 				<Button
 					onClick={() => handleCartClick()}

@@ -44,7 +44,7 @@ const ProductsPage = async (props: Props) => {
 	return (
 		<div className={`${container} mt-40  `}>
 			<div className=' flex justify-between items-center'>
-				<h1 className='text-xl font-semibold '>
+				<h1 className='text-base sm:text-xl font-semibold '>
 					{products.length} {products.length < 2 ? "product" : "products"}
 				</h1>
 

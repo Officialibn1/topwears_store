@@ -6,6 +6,7 @@ import { Product } from "@/typings";
 import { Badge } from "./ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+import { shimmer, toBase64 } from "@/lib/image";
 
 export const dynamic = "force-dynamic";
 
@@ -45,6 +46,10 @@ const PopularProductsSection = async (props: Props) => {
 						className='group relative rounded-lg border overflow-hidden'>
 						<div className='w-full h-4/5 overflow-hidden rounded-t-lg bg-foreground/20 group-hover:opacity-75'>
 							<Image
+								placeholder='blur'
+								blurDataURL={`data:image/svg+xml;base64,${toBase64(
+									shimmer(300, 300),
+								)}`}
 								src={product.imageUrl}
 								width={300}
 								height={300}
